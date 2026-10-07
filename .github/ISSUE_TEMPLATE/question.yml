@@ -1,0 +1,19 @@
+name: Setup question
+description: Ask about installing or using the beta.
+title: "[Setup] "
+body:
+  - type: markdown
+    attributes:
+      value: "First check the setup guide. This channel supports add-on use; it does not certify clinical answers. Keep credentials and private study data out of public reports."
+  - type: input
+    id: environment
+    attributes:
+      label: Anki version, operating system and add-on version
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What do you need help with?
+    validations:
+      required: true

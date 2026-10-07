@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a problem with the Orthobullets Context beta.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please use demo or redacted information. Do not upload your collection, private user_files, journals, credentials or identifying information."
+  - type: input
+    id: anki
+    attributes:
+      label: Anki version
+      placeholder: "25.09.4"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and version
+    validations:
+      required: true
+  - type: input
+    id: addon
+    attributes:
+      label: Add-on version
+      placeholder: "0.1.0-beta.2"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and error message
+      description: Redact private information. Preserve pending journals locally; do not upload them here.
+    validations:
+      required: true

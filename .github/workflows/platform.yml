@@ -24,13 +24,16 @@ jobs:
         run: python -m pip install 'aqt[qt]==25.9.4'
       - name: Prepare Linux display
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y xvfb libxcb-cursor0 libxkbcommon-x11-0 libegl1
+        run: sudo apt-get update && sudo apt-get install -y xvfb libxcb-cursor0 libxkbcommon-x11-0 libegl1 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-xinerama0 libxcb-randr0 libxcb-render-util0 libxcb-image0 libxcb-xfixes0 libxcb-sync1
       - name: Actual installer and backend fixtures
         if: runner.os != 'Linux'
         run: python tests/platform_smoke.py
       - name: Actual cookie restart and profile isolation fixtures
         if: runner.os != 'Linux'
         run: python tests/session_smoke.py
+      - name: Diagnose Linux Qt dependencies
+        if: runner.os == 'Linux'
+        run: python -c "import PyQt6.QtCore,pathlib,subprocess; p=pathlib.Path(PyQt6.QtCore.__file__).parent/'Qt6/plugins/platforms/libqxcb.so'; subprocess.run(['ldd',str(p)],check=True)"
       - name: Linux installer and backend fixtures
         if: runner.os == 'Linux'
         run: xvfb-run -a python tests/platform_smoke.py
